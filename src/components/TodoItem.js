@@ -1,14 +1,15 @@
 import React from "react";
+import { Button2, Li } from './styles';
 
-function TodoItem({ id, item, onCheck }) {
+const TodoItem = function({ id, item, onCheck }) {
     return (
         <>
-            <li
+            <Li
                 onClick={() => { onCheck(id) }}
             >
                 {item + "  "}
-                <button>delete</button>
-            </li>
+                <Button2>delete</Button2>
+            </Li>
         </>
     )
 }

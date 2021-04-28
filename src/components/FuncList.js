@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import TodoItem from "./TodoItem";
-import './styles.css';
+import { Button, Title, Wrapper, Input } from './styles';
 
 function FuncList() {
     const [input, setInput] = useState("");
     const [items, setItems] = useState([]);
 
-    function addItem() {
+    const addItem = function () {
         setItems(prevData => {
             return input.length > 0 ? [...prevData, input] : [...prevData]; // setItems можно сократить if ? A : B
         });
@@ -14,7 +14,7 @@ function FuncList() {
         setInput("");
     }
 
-    function removeItem(id) {
+    const removeItem = function (id) {
         setItems(prevData => {
             return prevData.filter((item, index) => {
                 return index !== id;
@@ -23,16 +23,18 @@ function FuncList() {
     }
 
     return (
-        <div className="container">
+        <Wrapper className="container">
             <div className="heading">
-                <h1 className="title">To Do List</h1>
+                <Title className="title">To Do List </Title>
             </div>
-            <input
+            <br></br>
+            <Input
                 type="text"
                 value={input}
+                placeholder="add your task"
                 onChange={(event) => { setInput(event.target.value) }}
             />
-            <button className='addButton' onClick={addItem}>Add</button>
+            <Button className='addButton' onClick={addItem}>Add</Button>
 
             <div className="items">
                 <ul>
@@ -46,7 +48,7 @@ function FuncList() {
                     ))}
                 </ul>
             </div>
-        </div>
+        </Wrapper>
     );
 }
 
